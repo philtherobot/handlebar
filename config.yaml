@@ -32,29 +32,29 @@ points:
       columns:
         ring:
           key:
-            from_net: B1
+            from_net: net_ring
         middle:
           key:
-            from_net: B2
+            from_net: net_middle
         index:
           key:
-            from_net: B3
+            from_net: net_index
         inner:
           key:
-            from_net: B4
+            from_net: net_inner
       rows:
         bottom:
           key:
-            to_net: C1
+            to_net: net_bottom
         home:
           key:
-            to_net: C2
+            to_net: net_home
         top:
           key:
-            to_net: C3
+            to_net: net_top
         nums:
           key:
-            to_net: C4
+            to_net: net_nums
     wing:
       key:
         from_net: GND
@@ -140,11 +140,20 @@ pcbs:
         params:
           from: "{{from_net}}"
           to: "{{to_net}}"
-          keycaps: true
-          reverse: true
+          keycaps: false
+          reverse: false
           hotswap: false
       mcu:
         what: elite-c
+        params:
+          D1: net_ring
+          D2: net_middle
+          D3: net_index
+          D4: net_inner
+          B1: net_bottom
+          B2: net_home
+          B3: net_top
+          B4: net_nums
         where:
           ref: matrix_inner_nums
           shift: [0.5cx + 17.78/2 + padmcu, 0.5cy - 33.02/2 - 2]
