@@ -1,0 +1,5 @@
+*.kicad_pcb binary
+*.kicad_pro binary
+*.kicad_prl binary
+*.kicad_sch binary
+fp-info-cache binary
