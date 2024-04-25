@@ -259,7 +259,39 @@
       },
       {
         "netclass": "Default",
+        "pattern": "ring_bottom"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "ring_home"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "ring_top"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "ring_nums"
+      },
+      {
+        "netclass": "Default",
         "pattern": "net_middle"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "middle_bottom"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "middle_home"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "middle_top"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "middle_nums"
       },
       {
         "netclass": "Default",
@@ -267,11 +299,75 @@
       },
       {
         "netclass": "Default",
+        "pattern": "index_bottom"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "index_home"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "index_top"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "index_nums"
+      },
+      {
+        "netclass": "Default",
         "pattern": "net_inner"
       },
       {
         "netclass": "Default",
-        "pattern": "net_nums"
+        "pattern": "inner_bottom"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "inner_home"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "inner_top"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "inner_nums"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "tip_home"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "tip_top"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "pinky_bottom"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "pinky_home"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "pinky_top"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "left_home"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "right_home"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "center_home"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "net_bottom"
       },
       {
         "netclass": "Default",
@@ -283,7 +379,15 @@
       },
       {
         "netclass": "Default",
-        "pattern": "net_bottom"
+        "pattern": "net_nums"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "net_pinky"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "net_outer"
       }
     ]
   },

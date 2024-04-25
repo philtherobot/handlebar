@@ -29,36 +29,33 @@ points:
     padding: padding
   zones:
     matrix:
+      # Fix placement on KiCAD sheet.
+      anchor:
+        shift: [100, -100]
+
       columns:
         ring:
           key:
-            from_net: net_ring
+            col_net: net_ring
         middle:
           key:
-            from_net: net_middle
+            col_net: net_middle
         index:
           key:
-            from_net: net_index
+            col_net: net_index
         inner:
           key:
-            from_net: net_inner
+            col_net: net_inner
       rows:
         bottom:
-          key:
-            to_net: net_bottom
+          row_net: net_bottom
         home:
-          key:
-            to_net: net_home
+          row_net: net_home
         top:
-          key:
-            to_net: net_top
+          row_net: net_top
         nums:
-          key:
-            to_net: net_nums
+          row_net: net_nums
     wing:
-      key:
-        from_net: GND
-        to_net: GND
       anchor:
         shift: [-2spread, -0.4cy]
       columns:
@@ -73,9 +70,6 @@ points:
             skip: false
         top:
     thumb:
-      key:
-        from_net: GND
-        to_net: GND
       anchor:
         ref: matrix_index_bottom
         shift: [-0.3cx, -padding]
@@ -128,6 +122,7 @@ outlines:
     - name: board
     - operation: stack
       name: keycaps
+
 pcbs:
   handlebar:
     outlines:
@@ -136,24 +131,56 @@ pcbs:
     footprints:
       keys:
         what: choc
-        where: /^matrix_.*/
+        where: true
         params:
-          from: "{{from_net}}"
-          to: "{{to_net}}"
+          from: "{{col_net}}"
+          to: "{{colrow}}"
           keycaps: false
-          reverse: false
+          reverse: true
           hotswap: false
+      diode:
+        what: diode
+        where: true
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, -5]          
       mcu:
+        #what: promicro
         what: elite-c
         params:
-          D1: net_ring
-          D2: net_middle
-          D3: net_index
-          D4: net_inner
-          B1: net_bottom
-          B2: net_home
-          B3: net_top
-          B4: net_nums
+          # D3: 
+          # D2: 
+          # GND0: 
+          # GND1:
+          # ----- rows 
+          D1: net_nums
+          D0: net_top
+          D4: net_home
+          C6: net_bottom
+          # D7: 
+          # E6: 
+          # B4: 
+          # B5: 
+          # ----- columns
+          B7: net_inner
+          D5: net_index
+          C7: net_middle
+          F1: net_ring
+          F0: net_pinky
+          B6: net_outer
+          # B2: 
+          # B3: 
+          # B1: 
+          # F7: 
+          # F6: 
+          # F5: 
+          # F4: 
+          # VCC: 
+          # RST: 
+          # GND2: 
+          # B0:
         where:
           ref: matrix_inner_nums
           shift: [0.5cx + 17.78/2 + padmcu, 0.5cy - 33.02/2 - 2]

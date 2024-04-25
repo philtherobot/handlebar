@@ -1,2 +1,5 @@
 .idea
 **/*.dxf
+_autosave*
+~_autosave*
+handlebar-20*.zip
