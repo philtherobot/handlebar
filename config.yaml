@@ -6,29 +6,33 @@ units:
   # cx, cy = Choc V1 spacing, 18×17
   # physical DMK keycap size = 17.5×16.5
   # We want a familiar horizontal spacing.
-  # So spread = 19 (standard).
+  # So spread = 19 (standard = u).
   # We want tighter as possible vertically
   # because we have four rows.
-  # So padding = 17
+  # So padding = 17 (cy)
 
-  # TODO: the following does not reflect the
-  # choices above. Furthermore, the wing for 
-  # the pinky should be made closer horizontally
-  # has the pinky has a harder time extending out.
+  spread: u     # 19mm
+  padding: cy   # 17mm
+  kcapx: 17.5
+  kcapy: 16.5
 
-  padx: 1
-  pady: 1
-  sidx: cx / 2
-  sidy: cy / 2
-  padmcu: 3
-  spread: 19
-  padding: 17
+  # Shifts around points to stretch the "board" polygon
+  bpadx: cx / 2 + 1.5 
+  bpady: cy / 2 + 1.5
+
+  mcuwidth: 17.78
+  mcuheight: 33.02
+  mcushiftx: 0.5cx + mcuwidth/2 + 8
+  mcushifty: 0.5cy - mcuheight/2 - 3
+
 points:
   key:
     spread: spread
     padding: padding
+
   zones:
-    matrix:
+    # The central 4×4 matrix
+    center:
       # Fix placement on KiCAD sheet.
       anchor:
         shift: [100, -100]
@@ -46,6 +50,7 @@ points:
         inner:
           key:
             col_net: net_inner
+
       rows:
         bottom:
           row_net: net_bottom
@@ -55,73 +60,105 @@ points:
           row_net: net_top
         nums:
           row_net: net_nums
+
+    # The keys at the outer edge
     wing:
+      key:
+        spread: cx  # Tighter spread for the pinky
+
       anchor:
-        shift: [-2spread, -0.4cy]
+        ref: center_ring_bottom
+        shift: [-2cx, -0.4cy]
+
       columns:
-        tip:
+        outer:
           rows:
             bottom.skip: true
+          key:
+            col_net: net_outer
         pinky:
+          key:
+            col_net: net_pinky
+
       rows:
         bottom:
+          row_net: net_bottom
         home:
-          key:
-            skip: false
+          row_net: net_home
         top:
+          row_net: net_top
+
+    # The lower keys for the thumb
     thumb:
       anchor:
-        ref: matrix_index_bottom
+        ref: center_index_bottom
         shift: [-0.3cx, -padding]
       columns:
         left:
+           key:
+             col_net: net_ring
         right:
+          key:
+            col_net: net_middle
         center:
           key:
             splay: -45
-            origin: [-5, -17]
+            origin: [3, -11]
+            col_net: net_index
         inner:
+          key:
+            col_net: net_inner
       rows:
-        home:
-#  mirror: 100
+        thumb:
+          row_net: net_thumb
+
 outlines:
-  # "keycaps" is the positions of the keycaps
+  # "keycaps" is the positions of the DMK keycaps
   keycaps:
     - what: rectangle
       where: true
-      size: [cx-0.5, cy-0.5]
-  # "keys_footprint" is the key positions
-  keys_footprint:
-    - what: rectangle
-      bound: true
-      where: true
-      size: [spread+1, padding+1]
-  
-  # "polygon" is a shape to extend the PCB in certain places
-  polygon:
-    - what: polygon
-      points:
-        - ref: matrix_inner_nums
-          shift: [0, cy/2+0.5]
-        - ref: matrix_inner_nums
-          shift: [40, cy/2+0.5]
-        - ref: matrix_inner_nums
-          shift: [40, -80]
-        - ref: thumb_right_home
-          shift: [cx/2, -cy/2-0.5]
+      size: [kcapx, kcapy]
 
-  # "board" is the outline of the PCB
+  raw:
+    - what: rectangle
+      where: true
+      size: [cx+1, cy+1]
+
   board:
-    - what: outline
-      name: keys_footprint
-    - what: outline
-      name: polygon
-      operation: add
+    - what: polygon
       fillet: 2
-  board_and_keycaps:
+      points:
+        - ref: wing_outer_home
+          shift: [-bpadx, -bpady]
+        - ref: wing_outer_top
+          shift: [-bpadx, bpady]
+        - ref: center_ring_nums
+          shift: [-bpadx, bpady]
+        - ref: center_inner_nums
+          shift: [bpadx, bpady]
+        - ref: center_inner_nums
+          shift: [40, bpady]
+        - ref: thumb_inner_thumb
+          shift: [bpadx, bpady]
+        - ref: thumb_inner_thumb
+          shift: [bpadx, -bpady]
+        - ref: wing_pinky_bottom
+          shift: [-bpadx, -bpady]
+
+  mcu:
+    - what: rectangle
+      size: [mcuwidth, mcuheight]
+      adjust: 
+        ref: center_inner_nums
+        shift: [mcushiftx, mcushifty] 
+      
+  preview:
     - name: board
     - operation: stack
       name: keycaps
+    - operation: stack
+      name: mcu
+
 
 pcbs:
   handlebar:
@@ -135,11 +172,11 @@ pcbs:
         params:
           from: "{{col_net}}"
           to: "{{colrow}}"
-          keycaps: false
+          keycaps: true
           reverse: true
           hotswap: false
       diode:
-        what: diode
+        what: diode_smd
         where: true
         params:
           from: "{{colrow}}"
@@ -150,6 +187,9 @@ pcbs:
         #what: promicro
         what: elite-c
         params:
+          reversable: true
+          instructions: false
+          reversable_pins: 12
           # D3: 
           # D2: 
           # GND0: 
@@ -159,7 +199,7 @@ pcbs:
           D0: net_top
           D4: net_home
           C6: net_bottom
-          # D7: 
+          D7: net_thumb
           # E6: 
           # B4: 
           # B5: 
@@ -182,6 +222,5 @@ pcbs:
           # GND2: 
           # B0:
         where:
-          ref: matrix_inner_nums
-          shift: [0.5cx + 17.78/2 + padmcu, 0.5cy - 33.02/2 - 2]
-          rotate: -90
+          ref: center_inner_nums
+          shift: [mcushiftx, mcushifty]
