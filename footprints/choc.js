@@ -54,7 +54,7 @@ module.exports = {
       (fp_line (start 9 8.5) (end -9 8.5) (layer Dwgs.User) (width 0.15))
       (fp_line (start -9 8.5) (end -9 -8.5) (layer Dwgs.User) (width 0.15))
       `
-    function pins(def_neg, def_pos, def_side) {
+    function pins(def_neg, def_pos, def_side, place_pad_2) {
       if(p.hotswap) {
         return `
           ${'' /* holes */}
@@ -66,25 +66,37 @@ module.exports = {
           (pad 2 smd rect (at ${def_pos}8.275 -3.75 ${p.r}) (size 2.6 2.6) (layers ${def_side}.Cu ${def_side}.Paste ${def_side}.Mask)  ${p.to})
         `
       } else {
-          return `
-            ${''/* pins */}
-            (pad 1 thru_hole circle (at ${def_pos}5 -3.8) (size 2.032 2.032) (drill 1.27) (layers *.Cu *.Mask) ${p.from})
-            (pad 2 thru_hole circle (at ${def_pos}0 -5.9) (size 2.032 2.032) (drill 1.27) (layers *.Cu *.Mask) ${p.to})
+          const pad1 = `(pad 1 thru_hole circle (at ${def_pos}5 -3.8) (size 2.032 2.032) (drill 1.27) (layers *.Cu *.Mask) ${p.from})`;
+          const pad2 = `(pad 2 thru_hole circle (at ${def_pos}0 -5.9) (size 2.032 2.032) (drill 1.27) (layers *.Cu *.Mask) ${p.to})`;
+          const comment = `${''/* pins */}`;
+
+          if(place_pad_2) {
+            return `
+            ${comment}
+            ${pad1}
+            ${pad2}
+            `;
+          }
+          else {
+            return `
+            ${comment}
+            ${pad1}
           `
+          }
       }
     }
     if(p.reverse) {
       return `
         ${standard}
         ${p.keycaps ? keycap : ''}
-        ${pins('-', '', 'B')}
-        ${pins('', '-', 'F')})
+        ${pins('-', '', 'B', false)}
+        ${pins('', '-', 'F', true)})
         `
     } else {
       return `
         ${standard}
         ${p.keycaps ? keycap : ''}
-        ${pins('-', '', 'B')})
+        ${pins('-', '', 'B', true)})
         `
     }
   }
