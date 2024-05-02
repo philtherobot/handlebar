@@ -25,6 +25,22 @@ units:
   mcushiftx: 0.5cx + mcuwidth/2 + 8
   mcushifty: 0.5cy - mcuheight/2 - 3
 
+  resetwidth: 5
+  resetheight: 5
+  resetshiftx: 40
+  resetshifty: -45
+
+  trrswidth: 5
+  trrsheight: 12
+  trrsshiftx: 38
+  trrsshifty: -33
+  trrsrotate: -83.4
+
+  indicatorwidth: 5
+  indicatorheight: 5
+  indicatorshiftx: 20
+  indicatorshifty: -45
+
 points:
   key:
     spread: spread
@@ -151,14 +167,50 @@ outlines:
       adjust: 
         ref: center_inner_nums
         shift: [mcushiftx, mcushifty] 
-      
+
+  reset:
+    - what: rectangle
+      size: [resetwidth, resetheight]      
+      adjust:
+        ref: center_inner_nums
+        shift: [resetshiftx, resetshifty]
+
+  trrs:
+    - what: rectangle
+      size: [trrswidth, trrsheight]
+      adjust: 
+        ref: center_inner_nums
+        shift: [trrsshiftx, trrsshifty]
+        rotate: trrsrotate
+
+  indicator1:
+    - what: rectangle
+      size: [indicatorwidth, indicatorheight]
+      adjust:
+        ref: center_inner_nums
+        shift: [indicatorshiftx, indicatorshifty]
+
+  indicator2:
+    - what: rectangle
+      size: [indicatorwidth, indicatorheight]
+      adjust:
+        ref: center_inner_nums
+        shift: [indicatorshiftx + indicatorwidth, indicatorshifty]
+
   preview:
     - name: board
     - operation: stack
       name: keycaps
     - operation: stack
-      name: mcu
-
+      name: mcu 
+    - operation: stack
+      name: reset
+    - operation: stack
+      name: trrs  
+    - operation: stack
+      name: indicator1
+    - operation: stack
+      name: indicator2
 
 pcbs:
   handlebar:
@@ -166,6 +218,7 @@ pcbs:
       main:
         outline: board
     footprints:
+
       keys:
         what: choc
         where: true
@@ -175,6 +228,7 @@ pcbs:
           keycaps: true
           reverse: true
           hotswap: false
+
       diode:
         what: diode_smd
         where: true
@@ -182,7 +236,53 @@ pcbs:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [0, -5]          
+          shift: [0, -5]     
+
+      reset:
+        what: button     
+        params:
+          from: ""
+          to: ""
+        where:
+          ref: center_inner_nums
+          shift: [resetshiftx, resetshifty]
+
+      trrs:
+        what: trrs
+        params:
+          reverse: true
+          A: ""
+          B: ""
+          C: ""
+          D: ""
+        where:
+          ref: center_inner_nums
+          shift: [trrsshiftx, trrsshifty]
+          rotate: trrsrotate
+
+      indicator1:
+        what: rgb
+        params:
+          designator: "I"
+          din: ""
+          dout: ""
+          VCC: ""
+          GND: ""
+        where:
+          ref: center_inner_nums
+          shift: [indicatorshiftx, indicatorshifty]
+
+      indicator2:
+        what: rgb
+        params:
+          designator: "I"
+          din: ""
+          dout: ""
+          VCC: ""
+          GND: ""
+        where:
+          ref: center_inner_nums
+          shift: [indicatorshiftx + indicatorwidth, indicatorshifty]
       mcu:
         #what: promicro
         what: elite-c
