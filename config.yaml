@@ -30,10 +30,10 @@ units:
   resetshiftx: 40
   resetshifty: -45
 
-  trrswidth: 5
-  trrsheight: 12
-  trrsshiftx: 38
-  trrsshifty: -33
+  trrswidth: 6
+  trrsheight: 14
+  trrsshiftx: 44
+  trrsshifty: -34
   trrsrotate: -83.4
 
   indicatorwidth: 5
@@ -180,7 +180,7 @@ outlines:
       size: [trrswidth, trrsheight]
       adjust: 
         ref: center_inner_nums
-        shift: [trrsshiftx, trrsshifty]
+        shift: [trrsshiftx - 5, trrsshifty - 1]
         rotate: trrsrotate
 
   indicator1:
