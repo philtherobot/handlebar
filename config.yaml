@@ -324,3 +324,29 @@ pcbs:
         where:
           ref: center_inner_nums
           shift: [mcushiftx, mcushifty]
+
+      # Using mounting hole from this fork: https://github.com/MvEerd/ergogen/blob/mveerd/src/footprints/mountinghole.js
+      mountinghole_top_left:
+        what: mountinghole
+        where:
+          ref: center_inner_nums
+          shift: [-81.6, -9]
+
+      mountinghole_bottom_left:
+        what: mountinghole
+        where:
+          ref: center_inner_nums
+          shift: [-61, -64.6]
+
+      mountinghole_top_right:
+        what: mountinghole
+        where:
+          ref: center_inner_nums
+          shift: [13, 0]
+
+      mountinghole_bottom_right:
+        what: mountinghole
+        where:
+          ref: center_inner_nums
+          shift: [13.2, -78.6]
+          
