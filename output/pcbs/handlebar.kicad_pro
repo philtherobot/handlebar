@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.762,
-          "height": 1.524,
-          "width": 1.524
+          "drill": 0.9,
+          "height": 2.2,
+          "width": 1.6
         },
         "silk_line_width": 0.12,
         "silk_text_italic": false,
@@ -466,7 +466,7 @@
       },
       {
         "netclass": "Default",
-        "pattern": "net_ring"
+        "pattern": "n_ring"
       },
       {
         "netclass": "Default",
@@ -486,7 +486,7 @@
       },
       {
         "netclass": "Default",
-        "pattern": "net_middle"
+        "pattern": "n_middle"
       },
       {
         "netclass": "Default",
@@ -506,7 +506,7 @@
       },
       {
         "netclass": "Default",
-        "pattern": "net_index"
+        "pattern": "n_index"
       },
       {
         "netclass": "Default",
@@ -526,7 +526,7 @@
       },
       {
         "netclass": "Default",
-        "pattern": "net_inner"
+        "pattern": "n_inner"
       },
       {
         "netclass": "Default",
@@ -546,7 +546,7 @@
       },
       {
         "netclass": "Default",
-        "pattern": "net_outer"
+        "pattern": "n_outer"
       },
       {
         "netclass": "Default",
@@ -558,7 +558,7 @@
       },
       {
         "netclass": "Default",
-        "pattern": "net_pinky"
+        "pattern": "n_pinky"
       },
       {
         "netclass": "Default",
@@ -590,23 +590,51 @@
       },
       {
         "netclass": "Default",
-        "pattern": "net_bottom"
+        "pattern": "n_bottom"
       },
       {
         "netclass": "Default",
-        "pattern": "net_home"
+        "pattern": "n_home"
       },
       {
         "netclass": "Default",
-        "pattern": "net_top"
+        "pattern": "n_top"
       },
       {
         "netclass": "Default",
-        "pattern": "net_nums"
+        "pattern": "n_nums"
       },
       {
         "netclass": "Default",
-        "pattern": "net_thumb"
+        "pattern": "n_thumb"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "n_reset"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "n_gnd"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "n_sda"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "n_sdl"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "n_vcc"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "n_indic"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "n_indic_next"
       },
       {
         "netclass": "Default",
@@ -618,15 +646,7 @@
       },
       {
         "netclass": "Default",
-        "pattern": "E6"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "B4"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "B5"
+        "pattern": "n_scl"
       },
       {
         "netclass": "Default",
@@ -642,39 +662,27 @@
       },
       {
         "netclass": "Default",
-        "pattern": "F6"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "F7"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "B1"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "B3"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "B2"
-      },
-      {
-        "netclass": "Default",
         "pattern": "VBUS"
       },
       {
         "netclass": "Default",
-        "pattern": "GND"
+        "pattern": "B7"
       },
       {
         "netclass": "Default",
-        "pattern": "RST"
+        "pattern": "D5"
       },
       {
         "netclass": "Default",
-        "pattern": "VCC"
+        "pattern": "C7"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "F1"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "F0"
       },
       {
         "netclass": "Default",

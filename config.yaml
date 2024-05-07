@@ -39,7 +39,7 @@ units:
   indicatorwidth: 5
   indicatorheight: 5
   indicatorshiftx: 20
-  indicatorshifty: -45
+  indicatorshifty: -50
 
 points:
   key:
@@ -56,26 +56,26 @@ points:
       columns:
         ring:
           key:
-            col_net: net_ring
+            col_net: n_ring
         middle:
           key:
-            col_net: net_middle
+            col_net: n_middle
         index:
           key:
-            col_net: net_index
+            col_net: n_index
         inner:
           key:
-            col_net: net_inner
+            col_net: n_inner
 
       rows:
         bottom:
-          row_net: net_bottom
+          row_net: n_bottom
         home:
-          row_net: net_home
+          row_net: n_home
         top:
-          row_net: net_top
+          row_net: n_top
         nums:
-          row_net: net_nums
+          row_net: n_nums
 
     # The keys at the outer edge
     wing:
@@ -91,18 +91,18 @@ points:
           rows:
             bottom.skip: true
           key:
-            col_net: net_outer
+            col_net: n_outer
         pinky:
           key:
-            col_net: net_pinky
+            col_net: n_pinky
 
       rows:
         bottom:
-          row_net: net_bottom
+          row_net: n_bottom
         home:
-          row_net: net_home
+          row_net: n_home
         top:
-          row_net: net_top
+          row_net: n_top
 
     # The lower keys for the thumb
     thumb:
@@ -112,21 +112,21 @@ points:
       columns:
         left:
            key:
-             col_net: net_ring
+             col_net: n_ring
         right:
           key:
-            col_net: net_middle
+            col_net: n_middle
         center:
           key:
             splay: -45
             origin: [3, -11]
-            col_net: net_index
+            col_net: n_index
         inner:
           key:
-            col_net: net_inner
+            col_net: n_inner
       rows:
         thumb:
-          row_net: net_thumb
+          row_net: n_thumb
 
 outlines:
   # "keycaps" is the positions of the DMK keycaps
@@ -241,8 +241,9 @@ pcbs:
       reset:
         what: button     
         params:
-          from: ""
-          to: ""
+          ref: rst
+          from: n_reset
+          to: n_gnd
         where:
           ref: center_inner_nums
           shift: [resetshiftx, resetshifty]
@@ -251,10 +252,10 @@ pcbs:
         what: trrs
         params:
           reverse: true
-          A: ""
-          B: ""
-          C: ""
-          D: ""
+          A: n_gnd # sleeve
+          B: n_sda # ring
+          C: n_scl # ring
+          D: n_vcc # tip
         where:
           ref: center_inner_nums
           shift: [trrsshiftx, trrsshifty]
@@ -264,10 +265,10 @@ pcbs:
         what: rgb
         params:
           designator: "I"
-          din: ""
-          dout: ""
-          VCC: ""
-          GND: ""
+          din: n_indic
+          dout: n_indic_next
+          VCC: n_vcc
+          GND: n_gnd
         where:
           ref: center_inner_nums
           shift: [indicatorshiftx, indicatorshifty]
@@ -276,10 +277,10 @@ pcbs:
         what: rgb
         params:
           designator: "I"
-          din: ""
+          din: n_indic_next
           dout: ""
-          VCC: ""
-          GND: ""
+          VCC: n_vcc
+          GND: n_gnd
         where:
           ref: center_inner_nums
           shift: [indicatorshiftx + indicatorwidth, indicatorshifty]
@@ -292,34 +293,37 @@ pcbs:
           reversable_pins: 12
           # D3: 
           # D2: 
-          # GND0: 
-          # GND1:
+          GND: n_gnd
+          # GND1: n_gnd
           # ----- rows 
-          D1: net_nums
-          D0: net_top
-          D4: net_home
-          C6: net_bottom
-          D7: net_thumb
-          # E6: 
-          # B4: 
-          # B5: 
+          D1: n_sda
+          D0: n_scl
+          D4: n_nums
+          C6: n_top
+          D7: n_home
+          E6: n_bottom
+          B4: n_thumb 
           # ----- columns
-          B7: net_inner
-          D5: net_index
-          C7: net_middle
-          F1: net_ring
-          F0: net_pinky
-          B6: net_outer
-          # B2: 
-          # B3: 
-          # B1: 
-          # F7: 
-          # F6: 
+          B5: n_inner
+          # ----- five bottom holes
+          # B7: 
+          # D5: 
+          # C7: 
+          # F1: 
+          # F0: 
+          # ----- right side, bottom to top
+          # ----- columns, continued
+          B6: n_index
+          B2: n_middle 
+          B3: n_ring 
+          B1: n_pinky  
+          F7: n_outer
+          F6: n_indic  
           # F5: 
           # F4: 
-          # VCC: 
-          # RST: 
-          # GND2: 
+          VCC: n_vcc
+          RST: n_reset
+          # GND2:
           # B0:
         where:
           ref: center_inner_nums

@@ -53,9 +53,15 @@ b3u1000p is a small reset push button. https://www.allaboutcircuits.com/electron
 
 This looks close to what I am trying to do: https://github.com/davidphilipbarr/Sweep/tree/main/Sweep%20half-swept
 
+Redox schematic https://github.com/mattdibi/redox-keyboard/blob/master/redox/pcb/Redox-schematic.pdf
 
 # Checklist
 
-- [ ] MCU position on the PCB matches the one in the preview.
+- [x] MCU position on the PCB matches the one in the preview.
 - [ ] Through holes are the correct size for my components.
-- [ ] Fit between the diode and the switch.
+- [x] Fit between the diode and the switch.
+- [ ] Pull up 4.7KΩ resistors, SDA to VCC, SCL to VCC
+- [x] Must I²C be connected to those two specific pins? D0 and D1? Yes, let's do that.
+- [ ] Should I ground all unused pins?
+- [ ] Are the back diodes pads connected to the traces on front?
+
