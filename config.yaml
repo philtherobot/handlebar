@@ -28,7 +28,7 @@ units:
   resetwidth: 5
   resetheight: 5
   resetshiftx: 40
-  resetshifty: -45
+  resetshifty: -50
 
   trrswidth: 6
   trrsheight: 14
@@ -39,7 +39,7 @@ units:
   indicatorwidth: 5
   indicatorheight: 5
   indicatorshiftx: 20
-  indicatorshifty: -50
+  indicatorshifty: -45
 
 points:
   key:
@@ -214,17 +214,18 @@ outlines:
 
 pcbs:
   handlebar:
+
     outlines:
       main:
         outline: board
-    footprints:
 
+    footprints:
       keys:
         what: choc
         where: true
         params:
-          from: "{{col_net}}"
-          to: "{{colrow}}"
+          from: "{{colrow}}"
+          to: "{{col_net}}"
           keycaps: true
           reverse: true
           hotswap: false
@@ -238,10 +239,26 @@ pcbs:
         adjust:
           shift: [0, -5]     
 
+      keyvia1:
+        what: via
+        where: true
+        params:
+          net: "{{row_net}}"
+        adjust:
+          shift: [-2.15, -5]
+
+      keyvia2:
+        what: via
+        where: true
+        params:
+          net: "{{colrow}}"
+        adjust:
+          shift: [2.15, -5]
+
       reset:
         what: button     
         params:
-          ref: rst
+          designator: rst
           from: n_reset
           to: n_gnd
         where:
@@ -272,6 +289,7 @@ pcbs:
         where:
           ref: center_inner_nums
           shift: [indicatorshiftx, indicatorshifty]
+          rotate: 90
 
       indicator2:
         what: rgb
@@ -284,6 +302,8 @@ pcbs:
         where:
           ref: center_inner_nums
           shift: [indicatorshiftx + indicatorwidth, indicatorshifty]
+          rotate: -90
+
       mcu:
         #what: promicro
         what: elite-c
@@ -295,16 +315,16 @@ pcbs:
           # D2: 
           GND: n_gnd
           # GND1: n_gnd
-          # ----- rows 
           D1: n_sda
           D0: n_scl
+          # ----- rows 
           D4: n_nums
           C6: n_top
           D7: n_home
           E6: n_bottom
           B4: n_thumb 
           # ----- columns
-          B5: n_inner
+          # cannot be reversed! B5: n_inner
           # ----- five bottom holes
           # B7: 
           # D5: 
@@ -313,13 +333,13 @@ pcbs:
           # F0: 
           # ----- right side, bottom to top
           # ----- columns, continued
-          B6: n_index
-          B2: n_middle 
-          B3: n_ring 
-          B1: n_pinky  
-          F7: n_outer
-          F6: n_indic  
-          # F5: 
+          # cannot be reversed B6: n_index
+          B2: n_middle # n_inner
+          B3: n_ring  # n_index
+          B1: n_pinky # n_middle
+          F7: n_outer # n_ring
+          F6: n_indic # n_pinky
+          # F5: n_indic 
           # F4: 
           VCC: n_vcc
           RST: n_reset

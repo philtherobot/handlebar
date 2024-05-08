@@ -130,26 +130,26 @@ module.exports = {
         for (let i = 0; i < spacing.total_pin_num/2; i++) {
           // Only place a pin hole for the top VCC if it reversavle
           if(i == 0){
-            thru_hole += p.reversable ? `(pad ${i} thru_hole oval (at ${spacing.top_left_pin.x}  ${spacing.top_left_pin.y + (i)*spacing.pin_dist}  ${p.rot})       (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) 
+            thru_hole += p.reversable ? `(pad ${i} thru_hole oval (at ${spacing.top_left_pin.x}  ${spacing.top_left_pin.y + (i)*spacing.pin_dist}  ${p.rot})       (size 2.5 2) (drill 1.6) (layers *.Cu *.Mask) 
             ${pin_nets[i][0]})\n` : ``
           
-            thru_hole +=`(pad ${spacing.total_pin_num - 1 - i} thru_hole oval (at ${spacing.top_right_pin.x} ${spacing.top_right_pin.y + (i)*spacing.pin_dist} ${180 + p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${pin_nets[i][1]})\n`
+            thru_hole +=`(pad ${spacing.total_pin_num - 1 - i} thru_hole oval (at ${spacing.top_right_pin.x} ${spacing.top_right_pin.y + (i)*spacing.pin_dist} ${180 + p.rot}) (size 2.5 2) (drill 1.6) (layers *.Cu *.Mask) ${pin_nets[i][1]})\n`
             continue;
           }
-          thru_hole += `(pad ${i}                             thru_hole oval (at ${spacing.top_left_pin.x}  ${spacing.top_left_pin.y + (i)*spacing.pin_dist}  ${p.rot})       (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.reversable && (i < p.reversable_pins) ? p.local_net(i).str : pin_nets[i][0]})\n`
+          thru_hole += `(pad ${i}                             thru_hole oval (at ${spacing.top_left_pin.x}  ${spacing.top_left_pin.y + (i)*spacing.pin_dist}  ${p.rot})       (size 2.5 2) (drill 1.6) (layers *.Cu *.Mask) ${p.reversable && (i < p.reversable_pins) ? p.local_net(i).str : pin_nets[i][0]})\n`
           
-          thru_hole += `(pad ${spacing.total_pin_num - 1 - i} thru_hole oval (at ${spacing.top_right_pin.x} ${spacing.top_right_pin.y + (i)*spacing.pin_dist} ${180 + p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.reversable && (i < p.reversable_pins) ? p.local_net(spacing.total_pin_num - 1 - i).str : pin_nets[i][1]})\n`
+          thru_hole += `(pad ${spacing.total_pin_num - 1 - i} thru_hole oval (at ${spacing.top_right_pin.x} ${spacing.top_right_pin.y + (i)*spacing.pin_dist} ${180 + p.rot}) (size 2.5 2) (drill 1.6) (layers *.Cu *.Mask) ${p.reversable && (i < p.reversable_pins) ? p.local_net(spacing.total_pin_num - 1 - i).str : pin_nets[i][1]})\n`
         }
         return thru_hole
       }
 
       /* Adds the bottom row of pins */
       const through_hole_bottom = `
-      (pad 30  thru_hole oval  (at -5.08 13.97) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.Mask) ${p.B7.str})
-      (pad 29  thru_hole oval  (at -2.54 13.97) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.Mask) ${p.D5.str})
-      (pad 28  thru_hole oval  (at  0    13.97) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.Mask) ${p.C7.str})
-      (pad 27  thru_hole oval  (at  2.54 13.97) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.Mask) ${p.F1.str})
-      (pad 26  thru_hole oval  (at  5.08 13.97) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.Mask) ${p.F0.str})
+      (pad 30  thru_hole oval  (at -5.08 13.97) (size 2 2.5) (drill 1.6) (layers *.Cu *.Mask) ${p.B7.str})
+      (pad 29  thru_hole oval  (at -2.54 13.97) (size 2 2.5) (drill 1.6) (layers *.Cu *.Mask) ${p.D5.str})
+      (pad 28  thru_hole oval  (at  0    13.97) (size 2 2.5) (drill 1.6) (layers *.Cu *.Mask) ${p.C7.str})
+      (pad 27  thru_hole oval  (at  2.54 13.97) (size 2 2.5) (drill 1.6) (layers *.Cu *.Mask) ${p.F1.str})
+      (pad 26  thru_hole oval  (at  5.08 13.97) (size 2 2.5) (drill 1.6) (layers *.Cu *.Mask) ${p.F0.str})
 `
 
       /*I made the male pad and female pads that I stole from infused-kim at https://nilnil.notion.site/Convert-Kicad-Footprints-to-Ergogen-8340ce87ad554c69af4e3f92bc9a0898

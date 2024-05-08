@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.9,
-          "height": 2.2,
-          "width": 1.6
+          "drill": 1.6,
+          "height": 2.0,
+          "width": 2.5
         },
         "silk_line_width": 0.12,
         "silk_text_italic": false,
@@ -51,7 +51,13 @@
           "min_clearance": 0.508
         }
       },
-      "diff_pair_dimensions": [],
+      "diff_pair_dimensions": [
+        {
+          "gap": 0.0,
+          "via_gap": 0.0,
+          "width": 0.0
+        }
+      ],
       "drc_exclusions": [],
       "meta": {
         "filename": "board_design_settings.json",
@@ -120,9 +126,9 @@
         "min_resolved_spokes": 2,
         "min_silk_clearance": 0.0,
         "min_text_height": 0.8,
-        "min_text_thickness": 0.08,
+        "min_text_thickness": 0.102,
         "min_through_hole_diameter": 0.3,
-        "min_track_width": 0.2,
+        "min_track_width": 0.076,
         "min_via_annular_width": 0.1,
         "min_via_diameter": 0.4,
         "solder_mask_to_copper_clearance": 0.0,
@@ -171,7 +177,9 @@
           "td_width_to_size_filter_ratio": 0.9
         }
       ],
-      "track_widths": [],
+      "track_widths": [
+        0.0
+      ],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
           "corner_radius_percentage": 80,
@@ -198,7 +206,12 @@
           "spacing": 0.6
         }
       },
-      "via_dimensions": [],
+      "via_dimensions": [
+        {
+          "diameter": 0.0,
+          "drill": 0.0
+        }
+      ],
       "zones_allow_external_fillets": false
     },
     "ipc2581": {
@@ -438,7 +451,7 @@
     "classes": [
       {
         "bus_width": 12,
-        "clearance": 0.2,
+        "clearance": 0.1,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -448,7 +461,7 @@
         "name": "Default",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.25,
+        "track_width": 0.2,
         "via_diameter": 0.8,
         "via_drill": 0.4,
         "wire_width": 6
@@ -622,7 +635,7 @@
       },
       {
         "netclass": "Default",
-        "pattern": "n_sdl"
+        "pattern": "n_scl"
       },
       {
         "netclass": "Default",
@@ -643,10 +656,6 @@
       {
         "netclass": "Default",
         "pattern": "D2"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "n_scl"
       },
       {
         "netclass": "Default",
@@ -686,99 +695,99 @@
       },
       {
         "netclass": "Default",
-        "pattern": "_1_1"
+        "pattern": "_51_1"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_24"
+        "pattern": "_51_24"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_2"
+        "pattern": "_51_2"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_23"
+        "pattern": "_51_23"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_3"
+        "pattern": "_51_3"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_22"
+        "pattern": "_51_22"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_4"
+        "pattern": "_51_4"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_21"
+        "pattern": "_51_21"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_5"
+        "pattern": "_51_5"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_20"
+        "pattern": "_51_20"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_6"
+        "pattern": "_51_6"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_19"
+        "pattern": "_51_19"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_7"
+        "pattern": "_51_7"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_18"
+        "pattern": "_51_18"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_8"
+        "pattern": "_51_8"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_17"
+        "pattern": "_51_17"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_9"
+        "pattern": "_51_9"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_16"
+        "pattern": "_51_16"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_10"
+        "pattern": "_51_10"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_15"
+        "pattern": "_51_15"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_11"
+        "pattern": "_51_11"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_14"
+        "pattern": "_51_14"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_0"
+        "pattern": "_51_0"
       },
       {
         "netclass": "Default",
-        "pattern": "_1_25"
+        "pattern": "_51_25"
       }
     ]
   },

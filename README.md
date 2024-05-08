@@ -32,14 +32,26 @@ Pass a folder instead of an input file name because handlebar has custom footpri
 
 ### KiCAD 
 
-https://flatfootfox.com/ergogen-part5-kicad-firmware-assembly/
+Tutorial: https://flatfootfox.com/ergogen-part5-kicad-firmware-assembly/
+
+Steps after ergogen has been executed:
+- File/Board Setup/Net Classes, change default clearance to 0.1mm
+- add the resistors footprints, R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
+- complete the net connections for the resistors
+- wire keys pin 1 to diode 2 on the back face
+- wire columns
+
 
 ### Fabrication
 
 PCB: material is FR-4.
 Thickness?
 
-https://www.golabo.com/fr/services
+Capacité technique, Le Labo: https://www.golabo.com/fr/services
+- Min ligne: 0.076mm (0.003")
+- Espace min entre 2 cuivres: 0.076
+- Sérigraphie min: 0.102mm (0.004")
+
 
 ### Notes
 
@@ -58,10 +70,10 @@ Redox schematic https://github.com/mattdibi/redox-keyboard/blob/master/redox/pcb
 # Checklist
 
 - [x] MCU position on the PCB matches the one in the preview.
-- [ ] Through holes are the correct size for my components.
+- [x] Through holes are the correct size for my components.
 - [x] Fit between the diode and the switch.
-- [ ] Pull up 4.7KΩ resistors, SDA to VCC, SCL to VCC
+- [x] Pull up 4.7KΩ resistors, SDA to VCC, SCL to VCC
 - [x] Must I²C be connected to those two specific pins? D0 and D1? Yes, let's do that.
 - [ ] Should I ground all unused pins?
-- [ ] Are the back diodes pads connected to the traces on front?
-
+- [x] Are the back diodes pads connected to the traces on front? No and I added them.
+- [ ] Decide on PCB thickness
