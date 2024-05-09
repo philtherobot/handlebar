@@ -34,18 +34,36 @@ Pass a folder instead of an input file name because handlebar has custom footpri
 
 Tutorial: https://flatfootfox.com/ergogen-part5-kicad-firmware-assembly/
 
+We are better to use constraints from makers. JLCPCB seems to have less capability than others. I found a Kicad board with JLC's capability set. See `fab/JLCPCB_1-2Layer template`.
+
 Steps after ergogen has been executed:
-- File/Board Setup/Net Classes, change default clearance to 0.1mm
+- Import board settings from JLCPCB_1-2Layer template. File/Board Setup/Import from another board. Turn User.Drawings back on.
 - add the resistors footprints, R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
 - complete the net connections for the resistors
-- wire keys pin 1 to diode 2 on the back face
-- wire columns
-
+- add a via below the indicators for VCC
+- wire keys pin 1 (2 of them) to diode 2 on the back
+- wire columns on the back
+- route columns around the top and through the middle of the MCU, starting with n_inner
+- wire rows on the front: they enter the MCU from the left
+- wire reset, place it on the right
+- wire VCC on the left of reset *and* go from the second resistor to the via on the *back*
+- wire ground, going between n_vcc and n_scl on the TRRS connector, up on the left of VCC
+- wire ground to all ground pins on the MCU
+- indicator grounds
+- indicator "next" and to the MCU
 
 ### Fabrication
 
+Prepare Gerber files:
+- File/Fabrication/Gerbers
+- Check the layers
+- Plot
+- Generate drill files
+
+Upload to JLCPCB (https://jlcpcb.com/)
+
 PCB: material is FR-4.
-Thickness?
+Thickness? Default at JLC is 1.6mm.
 
 Capacité technique, Le Labo: https://www.golabo.com/fr/services
 - Min ligne: 0.076mm (0.003")
@@ -76,4 +94,4 @@ Redox schematic https://github.com/mattdibi/redox-keyboard/blob/master/redox/pcb
 - [x] Must I²C be connected to those two specific pins? D0 and D1? Yes, let's do that.
 - [ ] Should I ground all unused pins?
 - [x] Are the back diodes pads connected to the traces on front? No and I added them.
-- [ ] Decide on PCB thickness
+- [x] Decide on PCB thickness: 1.6mm
