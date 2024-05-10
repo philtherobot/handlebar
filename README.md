@@ -1,8 +1,10 @@
 
+
+### Ergogen
+
 Online design tool at https://ergogen.cache.works/.
 
 Elite-C https://deskthority.net/wiki/Elite-C footprint from ceoloide: https://github.com/ceoloide/ergogen-footprints
-
 
 Running ergogen:
 
@@ -16,25 +18,24 @@ Pass a folder instead of an input file name because handlebar has custom footpri
 
 ### Parts
 
-- TRRS PJ-320A jack, 2 parts (Keebio)
-- Elite-C v4, 2 parts
-- Diodes 1N4148W, SOD-123, 50 parts
-- Choc v1 switches
-- DMK keycaps, 1U
-- Push buttons -model-, 2 parts
-- USB-C/USB cable
-- RGB LEDs, QMK compatible (SK-6812?) X parts (Keeio)
-- TRRS cable
+- Choc v1 switches (Keebd)
+- DMK keycaps, 1U (Keebd)
+- Elite-C v4, 2 parts (Omega Keys)
+- TRRS PJ-320A jack, 2 parts (Clickety Split)
+- TRRS cable (Clickety Split)
+- Diodes 1N4148W, SOD-123, 50 parts (Digikey 4530-1N4148WCT-ND)
+- Push buttons FSMCTTR, 2 parts (Digikey 450-2133-1-ND)
+- RGB LEDs FZ2812-5050, QMK compatible (WS2812B) (Digikey, 4544-FZ2812-5050CT-ND)
+- MCU socket 801-43-064-10-002000 (Digikey, ED10864-64-ND)
 - PCBs, 2 parts
-- To make the MCUs replaceable
-  - Mill Max sockets, for 2 MCUs
-  - Pins
+- USB-C/USB cable
+
 
 ### KiCAD 
 
 Tutorial: https://flatfootfox.com/ergogen-part5-kicad-firmware-assembly/
 
-We are better to use constraints from makers. JLCPCB seems to have less capability than others. I found a Kicad board with JLC's capability set. See `fab/JLCPCB_1-2Layer template`.
+We are better to use constraints from makers. JLCPCB seems to have less capability than others. I found a Kicad board with JLC's capability set. See `JLCPCB_1-2Layer template`.
 
 *DO NOT* edit the elite-c footprint as this will introduce a lot of errors!
 
@@ -78,13 +79,7 @@ Prepare Gerber files:
 
 Upload to JLCPCB (https://jlcpcb.com/)
 
-PCB: material is FR-4.
-Thickness? Default at JLC is 1.6mm.
-
-Capacité technique, Le Labo: https://www.golabo.com/fr/services
-- Min ligne: 0.076mm (0.003")
-- Espace min entre 2 cuivres: 0.076
-- Sérigraphie min: 0.102mm (0.004")
+PCB material is FR-4. Use the defaults (1.6mm). Remove JLC's serial numper. Pick your color. 
 
 
 ### Notes
@@ -101,6 +96,7 @@ This looks close to what I am trying to do: https://github.com/davidphilipbarr/S
 
 Redox schematic https://github.com/mattdibi/redox-keyboard/blob/master/redox/pcb/Redox-schematic.pdf
 
+
 # Checklist
 
 - [x] MCU position on the PCB matches the one in the preview.
@@ -108,6 +104,6 @@ Redox schematic https://github.com/mattdibi/redox-keyboard/blob/master/redox/pcb
 - [x] Fit between the diode and the switch.
 - [x] Pull up 4.7KΩ resistors, SDA to VCC, SCL to VCC
 - [x] Must I²C be connected to those two specific pins? D0 and D1? Yes, let's do that.
-- [ ] Should I ground all unused pins?
+- [x] Should I ground all unused pins? No. And there is no need to cover the unused space with ground copper.
 - [x] Are the back diodes pads connected to the traces on front? No and I added them.
 - [x] Decide on PCB thickness: 1.6mm
