@@ -4,3 +4,6 @@ _autosave*
 ~_autosave*
 handlebar-20*.zip
 fab
+fp-info-cache
+**/*.kicad_pcb.lck
+output/pcbs/*-backups
