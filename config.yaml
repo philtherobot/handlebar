@@ -1,5 +1,5 @@
 meta:
-  version: 0.0.1
+  version: 1
   author: philtherobot
   engine: 4.0.2
 units:
@@ -230,29 +230,13 @@ pcbs:
           hotswap: false
 
       diode:
-        what: diode_smd
+        what: diode
         where: true
         params:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
           shift: [0, -5]     
-
-      keyvia1:
-        what: via
-        where: true
-        params:
-          net: "{{row_net}}"
-        adjust:
-          shift: [-2.15, -5]
-
-      keyvia2:
-        what: via
-        where: true
-        params:
-          net: "{{colrow}}"
-        adjust:
-          shift: [2.15, -5]
 
       reset:
         what: button     
@@ -263,6 +247,7 @@ pcbs:
         where:
           ref: center_inner_nums
           shift: [resetshiftx, resetshifty]
+          rotate: -90
 
       trrs:
         what: trrs

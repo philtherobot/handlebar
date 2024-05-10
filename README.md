@@ -36,12 +36,19 @@ Tutorial: https://flatfootfox.com/ergogen-part5-kicad-firmware-assembly/
 
 We are better to use constraints from makers. JLCPCB seems to have less capability than others. I found a Kicad board with JLC's capability set. See `fab/JLCPCB_1-2Layer template`.
 
+*DO NOT* edit the elite-c footprint as this will introduce a lot of errors!
+
 Steps after ergogen has been executed:
 - Import board settings from JLCPCB_1-2Layer template. File/Board Setup/Import from another board. Turn User.Drawings back on.
 - add the resistors footprints, R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
-- complete the net connections for the resistors
+  - do not show the reference
+- change footprint of indicators to Personal:WS2812B
+- complete the net connections for the resistors (VCC on the right, SDA at the top, SCL at the bottom)
 - add a via below the indicators for VCC
+- (useful: Route/Interactive Router Setting, try Highlight + Free angle or Walk around)
 - wire keys pin 1 (2 of them) to diode 2 on the back
+- wire diode pads to holes on the front
+- wire through holes to both diode ends on the back
 - wire columns on the back
 - route columns around the top and through the middle of the MCU, starting with n_inner
 - wire rows on the front: they enter the MCU from the left
@@ -49,16 +56,25 @@ Steps after ergogen has been executed:
 - wire VCC on the left of reset *and* go from the second resistor to the via on the *back*
 - wire ground, going between n_vcc and n_scl on the TRRS connector, up on the left of VCC
 - wire ground to all ground pins on the MCU
+- wire SDA from TRRS to the MCU on the back
 - indicator grounds
 - indicator "next" and to the MCU
+
+Optional:
+- give a little bit of space around pads and traces
+- add the name and version on the silkscreens
+
 
 ### Fabrication
 
 Prepare Gerber files:
 - File/Fabrication/Gerbers
 - Check the layers
+  - *.Cu, *.Paste, *.Mask, *.Silkscreen, Edge.Cuts
+- Set a clean, new, empty directory
 - Plot
 - Generate drill files
+- Zip the output directory
 
 Upload to JLCPCB (https://jlcpcb.com/)
 
