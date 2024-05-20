@@ -295,6 +295,7 @@ pcbs:
           reversable: true
           instructions: false
           reversable_pins: 12
+          label: false
           # ----- left side, top to bottom
           # D3: 
           # D2: 

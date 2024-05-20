@@ -37,19 +37,22 @@ Tutorial: https://flatfootfox.com/ergogen-part5-kicad-firmware-assembly/
 
 We are better to use constraints from makers. JLCPCB seems to have less capability than others. I found a Kicad board with JLC's capability set. See `JLCPCB_1-2Layer template`.
 
-*DO NOT* edit the elite-c footprint as this will introduce a lot of errors!
+*DO NOT* edit the elite-c footprint as this will introduce a lot of errors! The errors are introduced because the nets that were setup by Ergogen are lost during the footprint edition.
 
 Steps after ergogen has been executed:
-- Import board settings from JLCPCB_1-2Layer template. File/Board Setup/Import from another board. Turn User.Drawings back on.
+- Import board settings from JLCPCB_1-2Layer template:
+  - File/Board Setup/Import from another board. 
+  - Turn User.Drawings back on.
+  - Change track width to 0.25mm in Net Classes
 - add the resistors footprints, R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
+  - under the TRRS
   - do not show the reference
 - change footprint of indicators to Personal:WS2812B
-- complete the net connections for the resistors (VCC on the right, SDA at the top, SCL at the bottom)
-- add a via below the indicators for VCC
 - (useful: Route/Interactive Router Setting, try Highlight + Free angle or Walk around)
+- complete the net connections for the resistors on front of board (VCC on the right, SDA at the top, SCL at the bottom)
+- add a via below the indicators for VCC
 - wire keys pin 1 (2 of them) to diode 2 on the back
-- wire diode pads to holes on the front
-- wire through holes to both diode ends on the back
+- wire diode pads to holes on the front and back
 - wire columns on the back
 - route columns around the top and through the middle of the MCU, starting with n_inner
 - wire rows on the front: they enter the MCU from the left
@@ -75,7 +78,7 @@ Prepare Gerber files:
 - Set a clean, new, empty directory
 - Plot
 - Generate drill files
-- Zip the output directory
+- Zip the output files, flat, no directory
 
 Upload to JLCPCB (https://jlcpcb.com/)
 
@@ -83,6 +86,10 @@ PCB material is FR-4. Use the defaults (1.6mm). Remove JLC's serial numper. Pick
 
 
 ### Notes
+
+Elite-C information:
+- https://deskthority.net/wiki/Elite-C
+- Development history, reveals a lot about how it works: https://blog.keeb.io/case-of-the-wayward-elite-c/
 
 https://flatfootfox.com/ergogen-part3-pcbs/
 
@@ -107,3 +114,4 @@ Redox schematic https://github.com/mattdibi/redox-keyboard/blob/master/redox/pcb
 - [x] Should I ground all unused pins? No. And there is no need to cover the unused space with ground copper.
 - [x] Are the back diodes pads connected to the traces on front? No and I added them.
 - [x] Decide on PCB thickness: 1.6mm
+- [x] What is the voltage needed by the RGB LEDs? 3V, so VCC is good. Crossed fingers.
