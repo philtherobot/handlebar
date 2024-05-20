@@ -3,7 +3,10 @@
 _autosave*
 ~_autosave*
 handlebar-20*.zip
-fab
+*.gbr
+*.gbrjob
+*.drl
 fp-info-cache
+fp-lib-table
 **/*.kicad_pcb.lck
 output/pcbs/*-backups

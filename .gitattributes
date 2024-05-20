@@ -3,3 +3,4 @@
 *.kicad_prl binary
 *.kicad_sch binary
 fp-info-cache binary
+*.zip binary
