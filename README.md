@@ -30,6 +30,33 @@ Pass a folder instead of an input file name because handlebar has custom footpri
 - PCBs, 2 parts
 - USB-C/USB cable
 
+The Atmega32u4 on the Elite-C has 32KB flash, 2.5KB SRAM, 16MHz CPU.
+
+#### Base
+
+Mild steel plate, 1/16", 5/64" or 3/32" thick. 1.5mm to 2.5mm thick. 200x150mm or 8"x6", two times.
+
+We plan to either solder the standoff or screw them.
+
+- 8mm long, M2 standoff, 6 times
+- dome head M2 screws, 6mm of thread, 6 times
+- dome head M2 screws, 4mm of thread, 8 times
+- flat head M2 screws, 6mm full length, 6 times
+- flat head M2 screws, 10mm full length, 8 times
+- M2 nuts, 8 times
+
+
+### Cost
+
+Elite-C at Omega Keys, 24$ each.
+Keycaps and switches, 114$
+PCB, JLCPcb, 
+TRRS cable
+Digi-key
+
+#### Not used, extra
+Switches, 13$
+TRRS cable, Keebd, 7$ (not used)
 
 ### KiCAD 
 
@@ -90,6 +117,7 @@ PCB material is FR-4. Use the defaults (1.6mm). Remove JLC's serial numper. Pick
 Elite-C information:
 - https://deskthority.net/wiki/Elite-C
 - Development history, reveals a lot about how it works: https://blog.keeb.io/case-of-the-wayward-elite-c/
+- Atmega34U4, Atme AVR
 
 https://flatfootfox.com/ergogen-part3-pcbs/
 
@@ -104,7 +132,7 @@ This looks close to what I am trying to do: https://github.com/davidphilipbarr/S
 Redox schematic https://github.com/mattdibi/redox-keyboard/blob/master/redox/pcb/Redox-schematic.pdf
 
 
-# Checklist
+# Hardware Checklist
 
 - [x] MCU position on the PCB matches the one in the preview.
 - [x] Through holes are the correct size for my components.
