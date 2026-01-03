@@ -143,3 +143,10 @@ Redox schematic https://github.com/mattdibi/redox-keyboard/blob/master/redox/pcb
 - [x] Are the back diodes pads connected to the traces on front? No and I added them.
 - [x] Decide on PCB thickness: 1.6mm
 - [x] What is the voltage needed by the RGB LEDs? 3V, so VCC is good. Crossed fingers.
+
+
+# Key Layout
+
+Diagrams are made with [Keyboard Layout Editor](https://www.keyboard-layout-editor.com/).
+
+I have linked the Keyboard Layout Editor account with my Github account. In any case, I saved the diagrams to `key_layout`.
